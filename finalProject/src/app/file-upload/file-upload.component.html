@@ -1,0 +1,44 @@
+<div class="miContenedor">
+    <div class=" m-3 mb-3">
+        <label for="formFile" class="form-label">Seleccionar archivo CSV: </label>
+        <input class="form-control" type="file" id="formFile" (change)="getFile($event)">
+        <br>
+        <div class="col text-center">
+            <button [disabled]="extensionExcel===true" (click)="submitData()" type="button" class="btn btn-primary btn-lg ">Submit</button>
+        </div>
+        <br>
+
+        <div *ngIf="columnas.length > 0">
+            <label for="selectXCol" class="form-label">Seleccionar columna X: </label>
+            <select [ngModel]="selectedX" id="selectXCol" (change)="seleccionarColX($any($event.target).value)" class="form-select" aria-label="Selecciona el tipo de grafico: ">
+                <option *ngFor="let i of columnas">{{i}}</option>
+            </select>
+            <label for="selectYCol" class="form-label">Seleccionar columna Y: </label>
+            <select [ngModel]="selectedY" id="selectYCol" (change)="seleccionarColY($any($event.target).value)" class="form-select" aria-label="Selecciona el tipo de grafico: ">
+                <option *ngFor="let i of columnas">{{i}}</option>
+            </select>
+            <br>
+
+            <div *ngIf="selectedX != '' && selectedY != ''">
+                <label for="selectGraph" class="form-label">Seleccionar tipo de Grafico: </label>
+                <select [ngModel]="selectedGraph" id="selectGraph" (change)="seleccionarGrafico($any($event.target).value)" class="form-select" aria-label="Selecciona el tipo de grafico: ">
+                    <option *ngFor="let i of graficos" [disabled]="!setDataTypes(i)">{{i}}</option>
+                </select>
+            </div>
+            <br>
+
+            <div class="col text-center">
+                <button [disabled]="selectedX=='' || selectedY == '' || selectedGraph == ''" (click)="crearGrafico()" type="button" class="btn btn-primary btn-lg ">Visualizar Grafico</button>
+            </div>
+            <br>
+            <div class="d-flex justify-content-start">
+                <img [src]="imageToShow" alt="Place image title" *ngIf="!isImageLoading; else noImageFound">
+                <ng-template #noImageFound>
+                    <img class="center-block" src="../../assets/images/imageLoading.jpg" alt="Fallbackimage">
+                </ng-template>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>

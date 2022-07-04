@@ -1,0 +1,90 @@
+body {
+    background-color: #f4f4f4;
+    color: #555555;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.6em;
+}
+
+.clr {
+    clear: both;
+}
+
+.cont1 {
+    background-color: coral;
+    position: relative;
+}
+
+.head {
+    padding: 15px;
+    float: left;
+    box-sizing: border-box;
+    align-items: center;
+    top: 50%;
+}
+
+#navbar {
+    float: center;
+    background-color: #575757;
+    padding: 20px;
+}
+
+#navbar ul {
+    padding: 0;
+    list-style: none;
+}
+
+#navbar li {
+    display: inline;
+}
+
+#navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding-right: 20px;
+}
+
+#contCentral {
+    background-image: url('../../assets/images/triangles.png');
+    background-position: center;
+    /*height: 400px;*/
+    padding: 50px;
+    text-align: center;
+}
+
+#box1 {
+    margin: 10%;
+    color: black;
+    border: white solid;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+#box1 h2,
+#box1 p {
+    position: relative;
+    z-index: 2;
+}
+
+#getStarted {
+    position: relative;
+    z-index: 3;
+}
+
+.arriba {
+    position: relative;
+    z-index: 3;
+    list-style-position: inside;
+}
+
+#box1 img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.4;
+}
