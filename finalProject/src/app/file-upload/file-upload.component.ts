@@ -85,7 +85,8 @@ export class FileUploadComponent implements OnInit {
     }
     else if(graph == "Pie"){
       let yy = myytype == "int64" || myytype == "float64"
-      if(yy){
+      let xx = myxtype == "int64" || myxtype == "float64"
+      if(yy && xx){
         myres = true
       }
       else{

@@ -31,27 +31,18 @@ def upload_file():
    if request.method == 'POST':
       f = request.files['file']
       f.save(secure_filename(f.filename))
-      file = f.read()#.decode('utf-8')
-      #data = pd.read_csv(file, delimiter=',')
       data = pd.read_csv(secure_filename(f.filename))
       filename = secure_filename(f.filename)
-      #data = pd.read_csv(request.files.get('file'))
       list_of_column_names = []
       for col in data.columns:
          list_of_column_names.append(col)
-      # os.remove(secure_filename(f.filename))
       return Response(json.dumps(list_of_column_names),  mimetype='application/json')
 @app.route('/getDataTypes', methods = ['GET'])
 def getDataTypes():
    global data
    global filename
    if request.method == 'GET':
-      # temp = data.dtypes.to_json(orient="split")
-      # parsed = json.loads(temp)
-      # return Response(json.dumps(parsed, indent=4),  mimetype='application/json')
-      # temp = {"dataTypes": data.dtypes.to_numpy()}
-      # encoded = json.dumps(temp, cls=NumpyArrayEncoder)
-      # return Response(encoded,  mimetype='application/json')
+      print(data.dtypes)
       return data.dtypes.to_string()
 @app.route('/getGraph', methods = ['GET'])
 def my_plot():
@@ -86,8 +77,7 @@ def my_plot():
       plt.savefig('./static/graph.png')
       plt.close('all')
       plt.clf()
-      os.remove(filename)
-      # sp = os.path.join(app.root_path,"fruta.jpg") 
+      os.remove('./'+filename) 
       response = send_from_directory(app.static_folder, "graph.png", mimetype='image/gif')
       return response
 
